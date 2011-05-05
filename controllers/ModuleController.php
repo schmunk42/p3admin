@@ -65,8 +65,10 @@ class ModuleController extends Controller {
 			foreach ($output AS $line) {
 				$this->_data['output'] .= $line . "\n";
 			}
+			$this->_data['migration'] = null;
 		} else {
-			$this->_data['output'] = "This module has no migration directory.";
+			$this->_data['migration'] = "This module has no migration directory.";
+			$this->_data['output'] = null;
 		}
 	}
 

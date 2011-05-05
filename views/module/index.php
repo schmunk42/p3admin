@@ -7,6 +7,12 @@ $this->breadcrumbs = array(
 <h1>Manage Module '<?php echo CHtml::link($this->getModuleName(),array('/'.$this->getModuleName())); ?>'</h1>
 
 <h2>Migration</h2>
+
+<p>
+<?php echo $migration; ?>
+</p>
+
+<?php if($output !== null): ?>
 <h3>Command</h3>
 <p>
 	<?php echo $command; ?>
@@ -28,6 +34,7 @@ $this->breadcrumbs = array(
 	?>
 
 </p>
+<?php endif; ?>
 
 
 <h2>Configuration</h2>
