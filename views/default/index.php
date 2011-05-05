@@ -3,7 +3,7 @@ $this->breadcrumbs=array(
 	$this->module->id,
 );
 ?>
-<h1>Administration</h1>
+<h1>Phundament 3 Administration</h1>
 
 <h2>Modules</h2>
 

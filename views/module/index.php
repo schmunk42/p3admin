@@ -6,7 +6,7 @@ $this->breadcrumbs = array(
 ?>
 <h1>Manage Module '<?php echo CHtml::link($this->getModuleName(),array('/'.$this->getModuleName())); ?>'</h1>
 
-<h2>Migration</h2>
+<h2>Migration (Database Schema Setup)</h2>
 
 <p>
 <?php echo $migration; ?>
