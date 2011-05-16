@@ -11,7 +11,7 @@ $this->breadcrumbs=array(
 	List of found modules
 </p>
 
-<table class="span-12">
+<table class="span-12 append-12 last">
 <?php foreach($this->getModuleData() AS $name => $config): ?>
 	<tr>
 		<td>
@@ -27,3 +27,8 @@ $this->breadcrumbs=array(
 <?php endforeach; ?>
 </table>
 
+<div class="span-18 last">
+    <h2>Current User</h2>
+    <h3>Name</h3>
+    <p><?php echo Yii::app()->user->name ?></p>
+</div>
