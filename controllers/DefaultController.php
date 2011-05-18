@@ -1,34 +1,54 @@
 <?php
 
 class DefaultController extends Controller {
-	
-	public function actionIndex() {
-		$modules = P3AdminModule::findModules();
-		foreach ($modules as $module) {
-			$moduleItems[] = array(
-				'label' => $module,
-					'url' => array('/p3admin/module','module'=>$module)
-			);
-		}
+	/**
+	 * @return array action filters
+	 */
+	public function filters()
+	{
+		return array(
+			'accessControl', // perform access control for CRUD operations
+		);
+	}
 
-		$this->menu = array(
-			array(
-				'label' => 'Application',
-				'items' => array(
-					array(
-						'label' => 'Home',
-						'url' => array('/')
-					),
-				),
+	/**
+	 * Specifies the access control rules.
+	 * This method is used by the 'accessControl' filter.
+	 * @return array access control rules
+	 */
+	public function accessRules()
+	{
+		return array(
+			array('allow',  // allow all users to perform 'index' and 'view' actions
+				'users'=>array('admin'),
 			),
-			array(
-				'label' => 'Modules',
-				'items' => $moduleItems
+			array('deny',  // deny all users
+				'users'=>array('*'),
 			),
 		);
-		$this->layout = "//layouts/column2";
+	}
+
+	public function actionIndex() {
+		#$this->layout = "//layouts/column2";
 		$this->render('index');
 	}
 
+	public function getModuleData() {
+		$filesystem = P3AdminModule::findModules();
+		$config = Yii::app()->modules;
+
+		foreach($filesystem AS $module) {
+			if (!isset($config[$module])) {
+				$config[$module] = null;
+			} else {
+				#$config[$module]
+			}
+		}
+
+		#var_dump($filesystem);
+		#var_dump($config);
+
+		return $config;
+	}
 
 }
