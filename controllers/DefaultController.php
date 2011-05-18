@@ -20,10 +20,12 @@ class DefaultController extends Controller {
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'users'=>array('*'),
+				'users'=>array('admin'),
+				'roles'=>array('admin, Admin')
 			),
 			array('deny',  // deny all users
-#				'users'=>array('*'),
+				'users'=>array('*'),
+				'expression'=> '!Yii::app()->getModule("p3admin")->params["install"]',
 			),
 		);
 	}
