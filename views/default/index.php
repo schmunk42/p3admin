@@ -13,7 +13,7 @@ $this->breadcrumbs = array(
 
 <table class="span-12 append-12 last">
 	<?php foreach ($this->getModuleData() AS $name => $config): ?>
-		<tr>
+		<tr class="<?php echo ($config !== null) ? 'success' : 'error' ?>">
 			<td>
 			<?php echo CHtml::link($name, array('/' . $name)) ?>
 		</td>
