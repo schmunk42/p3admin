@@ -20,18 +20,24 @@ class DefaultController extends Controller {
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'users'=>array('admin'),
+				'users'=>array('*'),
 			),
 			array('deny',  // deny all users
-				'users'=>array('*'),
+#				'users'=>array('*'),
 			),
 		);
 	}
 
 	public function actionIndex() {
-		#$this->layout = "//layouts/column2";
+		$this->layout = "//layouts/column2";
 		$this->render('index');
 	}
+
+	public function actionSettings() {
+		#$this->layout = "//layouts/column2";
+		$this->render('settings');
+	}
+
 
 	public function getModuleData() {
 		$filesystem = P3AdminModule::findModules();

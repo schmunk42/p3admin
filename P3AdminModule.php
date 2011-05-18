@@ -20,6 +20,9 @@ class P3AdminModule extends CWebModule
 		{
 			// this method is called before any module controller action is performed
 			// you may place customized code here
+Yii::app()->controller->menu=array(
+	array('label'=>'Show Settings', 'url'=>array('settings')),
+);
 			return true;
 		}
 		else
