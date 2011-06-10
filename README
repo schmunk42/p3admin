@@ -1,0 +1,3 @@
+Module handles installation of other modules.
+
+You can provide fallback files in modules-install.
