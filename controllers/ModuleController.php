@@ -1,11 +1,11 @@
 <?php
 
 class ModuleController extends Controller {
+
 	/**
 	 * @return array action filters
 	 */
-	public function filters()
-	{
+	public function filters() {
 		return array(
 			'accessControl', // perform access control for CRUD operations
 		);
@@ -16,16 +16,14 @@ class ModuleController extends Controller {
 	 * This method is used by the 'accessControl' filter.
 	 * @return array access control rules
 	 */
-	public function accessRules()
-	{
+	public function accessRules() {
 		return array(
-			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'users'=>array('*'),
+			array('allow', // allow all users to perform 'index' and 'view' actions
+				'users' => array('*'),
 			),
-			array('deny',  // deny all users
-				'users'=>array('*'),
-				'expression'=> '!Yii::app()->getModule("p3admin")->params["install"]',
-				
+			array('deny', // deny all users
+				'users' => array('*'),
+				'expression' => '!Yii::app()->getModule("p3admin")->params["install"]',
 			),
 		);
 	}
@@ -76,12 +74,14 @@ class ModuleController extends Controller {
 	}
 
 	private function prepareModuleMigrationData() {
-			$this->_data['command'] = './yiic migrate ' .
-				'--migrationPath=application.modules.' . $this->_moduleName . '.migrations ' .
-				'--migrationTable=tbl_migration_module_' . $this->_moduleName;
-				$this->_data['hasMigration'] = false;
+		$info = $this->fileInfo('migrations', null);
 
-		if (is_dir(Yii::getPathOfAlias('application.modules.' . $this->_moduleName . '.migrations'))) {
+		if ($info !== false) {
+			$this->_data['command'] = './yiic migrate ' .
+				'--migrationPath=' . $info['alias'] . ' ' .
+				'--migrationTable=tbl_migration_module_' . $this->_moduleName;
+			$this->_data['hasMigration'] = false;
+
 			chdir(Yii::getPathOfAlias('application'));
 			exec($this->_data['command'], $output, $return);
 
@@ -101,7 +101,8 @@ class ModuleController extends Controller {
 	}
 
 	private function prepareModuleReadmeData() {
-		if (is_file(Yii::getPathOfAlias('application.modules.' . $this->_moduleName . '.README'))) {
+		$info = $this->fileInfo('README', null);
+		if ($info !== false) {
 			$this->_data['readme'] = "<pre>" . file_get_contents(Yii::getPathOfAlias('application.modules.' . $this->_moduleName . '.README')) . "</pre>";
 		} else {
 			$this->_data['readme'] = "This module has no README file.";
@@ -109,13 +110,35 @@ class ModuleController extends Controller {
 	}
 
 	private function prepareModuleConfigurationData() {
-		$configFile = Yii::getPathOfAlias('application.modules.' . $this->_moduleName . '.config') . DIRECTORY_SEPARATOR . 'main.php';
-		if (is_file($configFile)) {
-			$configArray = require($configFile);
-			$this->_data['configuration'] = CVarDumper::dumpAsString($configArray,10,true);
+		$info = $this->fileInfo('config.main');
+		if ($info !== false) {
+			$configArray = require($info['path']);
+			$this->_data['configuration'] = CVarDumper::dumpAsString($configArray, 10, true);
 		} else {
 			$this->_data['configuration'] = "This module has no default configuration file.";
 		}
+	}
+
+	/**
+	 * Looks for files in the module or in p3admin.info as a fallback
+	 *
+	 * @param <type> $relativeAlias
+	 * @param <type> $ext
+	 * @return <type>
+	 */
+	private function fileInfo($relativeAlias, $ext = '.php') {
+		$defaultAlias = 'application.modules.' . $this->_moduleName . '.' . $relativeAlias;
+		$defaultFile = Yii::getPathOfAlias($defaultAlias) . $ext;
+
+		$fallbackAlias = 'application.modules.p3admin.modules-install.' . $this->_moduleName . '.' . $relativeAlias;
+		$fallbackFile = Yii::getPathOfAlias($fallbackAlias) . $ext;
+
+		if (is_readable($defaultFile))
+			return array('path' => $defaultFile, 'alias' => $defaultAlias);
+		elseif (is_readable($fallbackFile))
+			return array('path' => $fallbackFile, 'alias' => $fallbackAlias);
+		else
+			return false;
 	}
 
 }
