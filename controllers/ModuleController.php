@@ -60,10 +60,12 @@ class ModuleController extends Controller {
 	}
 
 	public function actionApplyMigration() {
+		$info = $this->fileInfo('migrations', null);
+
 		chdir(Yii::getPathOfAlias('application'));
 		$command = './yiic migrate up 1 ' .
 			'--interactive=0 ' .
-			'--migrationPath=application.modules.' . $this->_moduleName . '.migrations ' .
+			'--migrationPath='.$info['alias'].' ' .
 			'--migrationTable=tbl_migration_module_' . $this->_moduleName;
 		exec($command, $output, $return);
 		$echo = "";
