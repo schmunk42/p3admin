@@ -63,7 +63,7 @@ class ModuleController extends Controller {
 		$info = $this->fileInfo('migrations', null);
 
 		chdir(Yii::getPathOfAlias('application'));
-		$command = './yiic migrate up 1 ' .
+		$command = $this->module->yiicCommand.' migrate up 1 ' .
 			'--interactive=0 ' .
 			'--migrationPath='.$info['alias'].' ' .
 			'--migrationTable=tbl_migration_module_' . $this->_moduleName;
@@ -79,14 +79,19 @@ class ModuleController extends Controller {
 		$info = $this->fileInfo('migrations', null);
 
 		if ($info !== false) {
-			$this->_data['command'] = './yiic migrate ' .
+			$this->_data['command'] = $this->module->yiicCommand.' migrate ' .
 				'--migrationPath=' . $info['alias'] . ' ' .
 				'--migrationTable=tbl_migration_module_' . $this->_moduleName;
 			$this->_data['hasMigration'] = false;
 
+			
 			chdir(Yii::getPathOfAlias('application'));
 			exec($this->_data['command'], $output, $return);
-
+			
+			if (count($output) === 0) {
+				throw new CHttpException(500, 'Yiic command not found ('.$this->module->yiicCommand.')');
+			}
+			
 			if (!strstr($output[3], 'up-to-date')) {
 				$this->_data['hasMigration'] = true;
 			}
