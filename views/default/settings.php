@@ -6,10 +6,10 @@ $this->breadcrumbs = array(
 ?>
 <h1>Phundament 3 Administration</h1>
 
-<h2>Settings</h2>
+<h2>Language</h2>
 
 <p>
-	List of found modules
+	<?php echo Yii::app()->language ?>
 </p>
 
 		<div class="span-24 last">
