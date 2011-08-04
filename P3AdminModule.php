@@ -2,6 +2,8 @@
 
 class P3AdminModule extends CWebModule
 {
+	public $yiicCommand = "./yiic";
+	
 	public function init()
 	{
 		// this method is called when the module is being created
