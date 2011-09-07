@@ -44,4 +44,17 @@ Yii::app()->controller->menu=array(
         return $return;
     }
 
+	    public static function findApplicationControllers() {
+
+		$dir = Yii::app()->basePath;
+
+        foreach (scandir($dir . DIRECTORY_SEPARATOR . "controllers") AS $controller) {
+            if ((($controller != ".") && ($controller != "..")) && (is_file($dir . DIRECTORY_SEPARATOR . "controllers" . DIRECTORY_SEPARATOR . $controller))) {
+                #Yii::import("application.modules." . $module . ".controllers.*");
+                $return[] = str_replace('Controller.php', '', strtolower($controller[0]).substr($controller,1));
+            }
+        }
+        return $return;
+    }
+
 }
