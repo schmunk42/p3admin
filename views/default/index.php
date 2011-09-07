@@ -13,10 +13,6 @@ $this->breadcrumbs = array(
 
 <h2>Modules</h2>
 
-<p>
-	List of found modules
-</p>
-
 <table class="span-12 append-12 last">
 	<?php foreach ($this->getModuleData() AS $name => $config): ?>
 		<tr class="<?php echo ($config !== null) ? 'success' : 'error' ?>">
@@ -32,4 +28,10 @@ $this->breadcrumbs = array(
 	</tr>
 	<?php endforeach; ?>
 		</table>
-	
+
+<h2>Controllers</h2>
+<ul>
+	<?php foreach ($this->module->findApplicationControllers() AS $name): ?>
+	<li><?php echo CHtml::link($name, array('/'.$name)) ?></li>
+	<?php endforeach; ?>
+</ul>
