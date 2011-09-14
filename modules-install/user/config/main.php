@@ -5,7 +5,9 @@ return array(
 		'application.modules.user.models.*',
 	),
 	'modules' => array(
-		'user'
+		'user' => array(
+			'activeAfterRegister' => false,
+		),
 	),
 	'components' => array(
 		'user' => array(
