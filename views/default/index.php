@@ -4,11 +4,6 @@ $this->breadcrumbs = array(
 );
 ?>
 
-<?php if (Yii::app()->getModule("p3admin")->params["install"]): ?>
-<div class="flash-error"><strong>Warning! P3AdminModule installation mode is active, access is NOT restricted!</strong><br/>Update module config, when you've finished the setup of the user and rights modules.</div>
-<?php endif; ?>
-
-
 <h1>Phundament 3 Administration</h1>
 
 <h2>Modules</h2>

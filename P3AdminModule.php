@@ -49,7 +49,7 @@ Yii::app()->controller->menu=array(
 		$dir = Yii::app()->basePath;
 
         foreach (scandir($dir . DIRECTORY_SEPARATOR . "controllers") AS $controller) {
-            if ((($controller != ".") && ($controller != "..")) && (is_file($dir . DIRECTORY_SEPARATOR . "controllers" . DIRECTORY_SEPARATOR . $controller))) {
+            if ( substr($controller,0,1) != "." && (is_file($dir . DIRECTORY_SEPARATOR . "controllers" . DIRECTORY_SEPARATOR . $controller))) {
                 #Yii::import("application.modules." . $module . ".controllers.*");
                 $return[] = str_replace('Controller.php', '', strtolower($controller[0]).substr($controller,1));
             }
