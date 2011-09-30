@@ -29,19 +29,6 @@ class DefaultController extends Controller {
 			),
 		);
 	}
-	
-	public function beforeAction($action){
-		parent::beforeAction($action);
-		if (Yii::app()->getModule("p3admin")->params["install"]) {
-			EUserFlash::setWarningMessage("P3AdminModule installation mode is <b>active</b>, access is NOT restricted!<br/>".
-				"Update P3AdminModule config, when you've finished the setup of the user and rights modules.".
-				"<pre>".
-"'p3admin' => array(
-	'params' => array('install' => false),			
-),</pre>","install");
-		}
-		return true;
-	}
 
 	public function actionIndex() {
 		$this->layout = "//layouts/column2";
