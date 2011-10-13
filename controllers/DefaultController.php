@@ -21,7 +21,7 @@ class DefaultController extends Controller {
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
 				'actions'=>array('index','settings'),
-				'users'=>array('admin')
+				'roles'=>array('Admin')
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),

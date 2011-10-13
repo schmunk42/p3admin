@@ -18,12 +18,13 @@ class ModuleController extends Controller {
 	 */
 	public function accessRules() {
 		return array(
-			array('allow', // allow all users to perform 'index' and 'view' actions
-				'users' => array('*'),
+			array('allow',  // allow all users to perform 'index' and 'view' actions
+				'actions'=>array('index','settings'),
+				'roles'=>array('Admin')
 			),
-			array('deny', // deny all users
-				'users' => array('*'),
-				'expression' => '!Yii::app()->getModule("p3admin")->params["install"]',
+			array('deny',  // deny all users
+				'users'=>array('*'),
+				'expression'=> '!Yii::app()->getModule("p3admin")->params["install"]',
 			),
 		);
 	}
