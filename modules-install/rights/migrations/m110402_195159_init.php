@@ -4,32 +4,92 @@ class m110402_195159_init extends CDbMigration {
 
 	public function up() {
 
-		echo "*** WARNING ***\nJust for debugging - Primary Key definitions missing!\n\n";
+		if (Yii::app()->db->schema instanceof CMysqlSchema)
+			$options = 'ENGINE=InnoDB DEFAULT CHARSET=utf8';
+		else
+			$options = '';
+
+
+// Schema for table 'AuthAssignment'
 
 		$this->createTable("AuthAssignment", array(
-			"itemname" => "varchar(64)  NOT NULL",
-			"userid" => "varchar(64)  NOT NULL",
+			"itemname" => "varchar(64) NOT NULL",
+			"userid" => "varchar(64) NOT NULL",
 			"bizrule" => "text",
 			"data" => "text",
-			"primary key (itemname,userid)",
-			"foreign key (itemname) references AuthItem (name) on delete cascade on update cascade"
-		));
+			"PRIMARY KEY (itemname)"
+			), $options);
 
-		$this->insert("AuthAssignment", array(
-			"itemname" => "Admin",
-			"userid" => "1",
-			"bizrule" => null,
-			"data" => "N;",
-			));
+
+
+// Data for table 'AuthAssignment'
+// Schema for table 'AuthItem'
 
 		$this->createTable("AuthItem", array(
-			"name" => "varchar(64)  NOT NULL",
-			"type" => "integer NOT NULL",
+			"name" => "varchar(64) NOT NULL",
+			"type" => "int(11) NOT NULL",
 			"description" => "text",
 			"bizrule" => "text",
 			"data" => "text",
-			"primary key (name)"
-			), "");
+			"PRIMARY KEY (name)"
+			), $options);
+
+
+
+// Data for table 'AuthItem'
+// Schema for table 'AuthItemChild'
+
+		$this->createTable("AuthItemChild", array(
+			"parent" => "varchar(64) NOT NULL",
+			"child" => "varchar(64) NOT NULL",
+			"PRIMARY KEY (parent)"
+			), $options);
+
+
+
+
+		$this->createTable("Rights", array(
+			"itemname" => "varchar(64) NOT NULL",
+			"type" => "int(11) NOT NULL",
+			"weight" => "int(11) NOT NULL",
+			"PRIMARY KEY (itemname)"
+			), $options);
+		
+// Foreign Keys for table 'AuthItemChild'
+
+		if ((Yii::app()->db->schema instanceof CSqliteSchema) == false):
+			$this->addForeignKey('fk_authitem_parent', 'AuthItemChild', 'parent', 'authitem', 'name', null, null); // update 'null' for ON DELTE and ON UPDATE
+			$this->addForeignKey('fk_authitem_child', 'AuthItemChild', 'child', 'authitem', 'name', null, null); // update 'null' for ON DELTE and ON UPDATE
+		endif;
+
+
+		// Foreign Keys for table 'AuthAssignment'
+
+		if ((Yii::app()->db->schema instanceof CSqliteSchema) == false):
+
+			$this->addForeignKey('fk_authitem_itemname', 'AuthAssignment', 'itemname', 'authitem', 'name', null, null); // update 'null' for ON DELTE and ON UPDATE
+
+		endif;
+
+
+// Foreign Keys for table 'AuthItem'
+
+		if ((Yii::app()->db->schema instanceof CSqliteSchema) == false):
+
+		endif;
+
+
+// Foreign Keys for table 'Rights'
+
+		if ((Yii::app()->db->schema instanceof CSqliteSchema) == false):
+
+			$this->addForeignKey('fk_rights_authitem_itemname', 'Rights', 'itemname', 'authitem', 'name', null, null); // update 'null' for ON DELTE and ON UPDATE
+
+		endif;
+
+
+
+// Data for table 'AuthItemChild'
 
 		$this->insert("AuthItem", array(
 			"name" => "Admin",
@@ -37,7 +97,7 @@ class m110402_195159_init extends CDbMigration {
 			"description" => null,
 			"bizrule" => null,
 			"data" => "N;",
-			));
+		));
 
 		$this->insert("AuthItem", array(
 			"name" => "Authenticated",
@@ -45,7 +105,7 @@ class m110402_195159_init extends CDbMigration {
 			"description" => null,
 			"bizrule" => null,
 			"data" => "N;",
-			));
+		));
 
 		$this->insert("AuthItem", array(
 			"name" => "Guest",
@@ -53,23 +113,15 @@ class m110402_195159_init extends CDbMigration {
 			"description" => null,
 			"bizrule" => null,
 			"data" => "N;",
-			));
+		));
 
-		$this->createTable("AuthItemChild", array(
-			"parent" => "varchar(64)  NOT NULL",
-			"child" => "varchar(64)  NOT NULL",
-			"primary key (parent,child)",
-			"foreign key (parent) references AuthItem (name) on delete cascade on update cascade",
-			"foreign key (child) references AuthItem (name) on delete cascade on update cascade"
-			), "");
-
-		$this->createTable("Rights", array(
-			"itemname" => "varchar(64)  NOT NULL",
-			"type" => "integer NOT NULL",
-			"weight" => "integer NOT NULL",
-			"primary key (itemname)",
-			"foreign key (itemname) references AuthItem (name) on delete cascade on update cascade"
-			), "");
+		$this->insert("AuthAssignment", array(
+			"itemname" => "Admin",
+			"userid" => "1",
+			"bizrule" => null,
+			"data" => "N;",
+		));
+		
 	}
 
 	public function down() {
