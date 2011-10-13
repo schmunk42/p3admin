@@ -3,6 +3,23 @@
 class m111013_235000_p3items extends CDbMigration {
 
 	public function up() {
+		$this->insert("AuthAssignment", array(
+			"itemname" => "Editor",
+			"userid" => "3",
+			"bizrule" => null,
+			"data" => "N;",
+		));
+
+		
+		$this->insert("AuthItem", array(
+			"name" => "Editor",
+			"type" => "2",
+			"description" => "Content Editor (Widgets, Media Files)",
+			"bizrule" => null,
+			"data" => "N;",
+		));
+
+
 		$this->insert("AuthItem", array(
 			"name" => "P3admin.Default.*",
 			"type" => "1",
