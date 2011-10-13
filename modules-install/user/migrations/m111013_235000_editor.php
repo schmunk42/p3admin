@@ -8,7 +8,7 @@ class m111013_235000_editor extends CDbMigration {
 			"id" => "3",
 			"username" => "editor",
 			"password" => "5aee9dbd2a188839105073571bee1b1f",
-			"email" => "editor.com",
+			"email" => "editor@example.com",
 			"activkey" => "32ae2c5f8da0baaf8af20fedcb75d1a7",
 			"createtime" => "0",
 			"lastvisit" => "0",
