@@ -4,7 +4,7 @@ class m110402_195159_init extends CDbMigration {
 
 	public function up() {
 
-		$this->createTable("tbl_users", array(
+		$this->createTable("usr_users", array(
 			"id" => "pk",
 			"username" => "varchar(20) NOT NULL",
 			"password" => "varchar(128) NOT NULL",
@@ -16,7 +16,7 @@ class m110402_195159_init extends CDbMigration {
 			"status" => "int(1) NOT NULL",
 			), "");
 
-		$this->insert("tbl_users", array(
+		$this->insert("usr_users", array(
 			"id" => "1",
 			"username" => "admin",
 			"password" => "21232f297a57a5a743894a0e4a801fc3",
@@ -28,7 +28,7 @@ class m110402_195159_init extends CDbMigration {
 			"status" => "1",
 			));
 
-		$this->insert("tbl_users", array(
+		$this->insert("usr_users", array(
 			"id" => "2",
 			"username" => "demo",
 			"password" => "fe01ce2a7fbac8fafaed7c982a04e229",
@@ -40,28 +40,28 @@ class m110402_195159_init extends CDbMigration {
 			"status" => "1",
 			));
 
-		$this->createTable("tbl_profiles", array(
+		$this->createTable("usr_profiles", array(
 			"user_id" => "pk",
 			"lastname" => "varchar(50) NOT NULL",
 			"firstname" => "varchar(50) NOT NULL",
 			"birthday" => "date NOT NULL DEFAULT '0000-00-00'",
 			), "");
 
-		$this->insert("tbl_profiles", array(
+		$this->insert("usr_profiles", array(
 			"user_id" => "1",
 			"lastname" => "Admin",
 			"firstname" => "Administrator",
 			"birthday" => "0000-00-00",
 			));
 
-		$this->insert("tbl_profiles", array(
+		$this->insert("usr_profiles", array(
 			"user_id" => "2",
 			"lastname" => "Demo",
 			"firstname" => "Demo",
 			"birthday" => "0000-00-00",
 			));
 
-		$this->createTable("tbl_profiles_fields", array(
+		$this->createTable("usr_profiles_fields", array(
 			"id" => "pk",
 			"varname" => "varchar(50) NOT NULL",
 			"title" => "varchar(255) NOT NULL",
@@ -80,7 +80,7 @@ class m110402_195159_init extends CDbMigration {
 			"visible" => "int(1) NOT NULL",
 			), "");
 
-		$this->insert("tbl_profiles_fields", array(
+		$this->insert("usr_profiles_fields", array(
 			"id" => "1",
 			"varname" => "lastname",
 			"title" => "Last Name",
@@ -99,7 +99,7 @@ class m110402_195159_init extends CDbMigration {
 			"visible" => "3",
 			));
 
-		$this->insert("tbl_profiles_fields", array(
+		$this->insert("usr_profiles_fields", array(
 			"id" => "2",
 			"varname" => "firstname",
 			"title" => "First Name",
@@ -118,7 +118,7 @@ class m110402_195159_init extends CDbMigration {
 			"visible" => "3",
 			));
 
-		$this->insert("tbl_profiles_fields", array(
+		$this->insert("usr_profiles_fields", array(
 			"id" => "3",
 			"varname" => "birthday",
 			"title" => "Birthday",
@@ -139,9 +139,9 @@ class m110402_195159_init extends CDbMigration {
 	}
 
 	public function down() {
-		$this->dropTable('tbl_profiles');
-		$this->dropTable('tbl_profiles_fields');
-		$this->dropTable('tbl_users');
+		$this->dropTable('usr_profiles');
+		$this->dropTable('usr_profiles_fields');
+		$this->dropTable('usr_users');
 	}
 
 	/*

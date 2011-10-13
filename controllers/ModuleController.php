@@ -66,7 +66,7 @@ class ModuleController extends Controller {
 		$command = $this->module->yiicCommand.' migrate up 1 ' .
 			'--interactive=0 ' .
 			'--migrationPath='.$info['alias'].' ' .
-			'--migrationTable=tbl_migration_module_' . $this->_moduleName;
+			'--migrationTable=migration_module_' . $this->_moduleName;
 		exec($command, $output, $return);
 		$echo = "";
 		foreach ($output AS $line) {
@@ -81,7 +81,7 @@ class ModuleController extends Controller {
 		if ($info !== false) {
 			$this->_data['command'] = $this->module->yiicCommand.' migrate ' .
 				'--migrationPath=' . $info['alias'] . ' ' .
-				'--migrationTable=tbl_migration_module_' . $this->_moduleName;
+				'--migrationTable=migration_module_' . $this->_moduleName;
 			$this->_data['hasMigration'] = false;
 
 			

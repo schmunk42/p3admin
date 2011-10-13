@@ -16,7 +16,7 @@ return array(
 			'loginUrl' => array('/user/login'),
 		),
 		'db' => array(
-			'tablePrefix' => 'tbl_'
+			'tablePrefix' => 'usr_'
 		),
 	),
 )
