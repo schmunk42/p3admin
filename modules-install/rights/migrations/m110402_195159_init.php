@@ -17,7 +17,7 @@ class m110402_195159_init extends CDbMigration {
 			"userid" => "varchar(64) NOT NULL",
 			"bizrule" => "text",
 			"data" => "text",
-			"PRIMARY KEY (itemname)"
+			//"INDEX (itemname)"
 			), $options);
 
 
@@ -42,7 +42,7 @@ class m110402_195159_init extends CDbMigration {
 		$this->createTable("AuthItemChild", array(
 			"parent" => "varchar(64) NOT NULL",
 			"child" => "varchar(64) NOT NULL",
-			"PRIMARY KEY (parent)"
+			//"INDEX (parent)"
 			), $options);
 
 
@@ -52,7 +52,7 @@ class m110402_195159_init extends CDbMigration {
 			"itemname" => "varchar(64) NOT NULL",
 			"type" => "int(11) NOT NULL",
 			"weight" => "int(11) NOT NULL",
-			"PRIMARY KEY (itemname)"
+			//"PRIMARY KEY (itemname)"
 			), $options);
 		
 // Foreign Keys for table 'AuthItemChild'
