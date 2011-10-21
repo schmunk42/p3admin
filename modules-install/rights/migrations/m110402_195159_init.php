@@ -58,8 +58,8 @@ class m110402_195159_init extends CDbMigration {
 // Foreign Keys for table 'AuthItemChild'
 
 		if ((Yii::app()->db->schema instanceof CSqliteSchema) == false):
-			$this->addForeignKey('fk_authitem_parent', 'AuthItemChild', 'parent', 'authitem', 'name', null, null); // update 'null' for ON DELTE and ON UPDATE
-			$this->addForeignKey('fk_authitem_child', 'AuthItemChild', 'child', 'authitem', 'name', null, null); // update 'null' for ON DELTE and ON UPDATE
+			$this->addForeignKey('fk_authitem_parent', 'AuthItemChild', 'parent', 'AuthItem', 'name', null, null); // update 'null' for ON DELTE and ON UPDATE
+			$this->addForeignKey('fk_authitem_child', 'AuthItemChild', 'child', 'AuthItem', 'name', null, null); // update 'null' for ON DELTE and ON UPDATE
 		endif;
 
 
@@ -67,7 +67,7 @@ class m110402_195159_init extends CDbMigration {
 
 		if ((Yii::app()->db->schema instanceof CSqliteSchema) == false):
 
-			$this->addForeignKey('fk_authitem_itemname', 'AuthAssignment', 'itemname', 'authitem', 'name', null, null); // update 'null' for ON DELTE and ON UPDATE
+			$this->addForeignKey('fk_authitem_itemname', 'AuthAssignment', 'itemname', 'AuthItem', 'name', null, null); // update 'null' for ON DELTE and ON UPDATE
 
 		endif;
 
@@ -83,7 +83,7 @@ class m110402_195159_init extends CDbMigration {
 
 		if ((Yii::app()->db->schema instanceof CSqliteSchema) == false):
 
-			$this->addForeignKey('fk_rights_authitem_itemname', 'Rights', 'itemname', 'authitem', 'name', null, null); // update 'null' for ON DELTE and ON UPDATE
+			$this->addForeignKey('fk_rights_authitem_itemname', 'Rights', 'itemname', 'AuthItem', 'name', null, null); // update 'null' for ON DELTE and ON UPDATE
 
 		endif;
 
