@@ -3,12 +3,6 @@
 class m111013_235000_p3items extends CDbMigration {
 
 	public function up() {
-		$this->insert("AuthAssignment", array(
-			"itemname" => "Editor",
-			"userid" => "3",
-			"bizrule" => null,
-			"data" => "N;",
-		));
 
 		
 		$this->insert("AuthItem", array(
@@ -18,7 +12,6 @@ class m111013_235000_p3items extends CDbMigration {
 			"bizrule" => null,
 			"data" => "N;",
 		));
-
 
 		$this->insert("AuthItem", array(
 			"name" => "P3admin.Default.*",
@@ -142,6 +135,15 @@ class m111013_235000_p3items extends CDbMigration {
 			"parent" => "Editor",
 			"child" => "Authenticated",
 		));
+
+		
+		$this->insert("AuthAssignment", array(
+			"itemname" => "Editor",
+			"userid" => "3",
+			"bizrule" => null,
+			"data" => "N;",
+		));
+
 	}
 
 	public function down() {
