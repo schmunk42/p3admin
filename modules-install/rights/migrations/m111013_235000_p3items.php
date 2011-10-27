@@ -130,12 +130,6 @@ class m111013_235000_p3items extends CDbMigration {
 			"parent" => "Editor",
 			"child" => "P3widgets.Widget.*",
 		));
-
-		$this->insert("AuthItemChild", array(
-			"parent" => "Editor",
-			"child" => "Authenticated",
-		));
-
 		
 		$this->insert("AuthAssignment", array(
 			"itemname" => "Editor",

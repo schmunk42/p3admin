@@ -102,8 +102,8 @@ class m110402_195159_init extends CDbMigration {
 		$this->insert("AuthItem", array(
 			"name" => "Authenticated",
 			"type" => "2",
-			"description" => null,
-			"bizrule" => null,
+			"description" => 'All user accounts',
+			"bizrule" => 'return !Yii::app()->user->isGuest;',
 			"data" => "N;",
 		));
 
