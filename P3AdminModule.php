@@ -1,5 +1,34 @@
 <?php
-
+/**
+ * Class File
+ *
+ * @author Tobias Munk <schmunk@usrbin.de>
+ * @link http://www.phundament.com/
+ * @copyright Copyright &copy; 2005-2010 diemeisterei GmbH
+ * @license http://www.phundament.com/license/
+ */
+/**
+ * Description ...
+ *
+ * Detailed info
+ * <pre>
+ * <?php
+ *     $this->widget(
+ *         'p3widgets.components.P3WidgetContainer',
+ *         array(
+ *             'id'=>'main',
+ *             #'checkAccess'=>false //disables checkAccess feature
+ *             )
+ *     );
+ * ?>
+ * </pre>
+ * {@link DefaultController}
+ *
+ * @author Tobias Munk <schmunk@usrbin.de>
+ * @version $Id$
+ * @package p3admin
+ * @since 3.0
+ */
 class P3AdminModule extends CWebModule {
 
 	public $yiicCommand = "./yiic";
