@@ -11,15 +11,16 @@ return array(
 		),
 		'authManager' => array(
 			'class' => 'RDbAuthManager', // Provides support authorization item sorting.
+			'defaultRoles' => array('Authenticated', 'Guest'), // see correspoing business rules, note: superusers always get checkAcess == true
 		),
 	),
 	'modules' => array(
 		'rights' => array(
-			'userIdColumn'=>'id',
+			'userIdColumn' => 'id',
 			'userClass' => 'User',
-			#'install' => true, // Enables the installer.
-			#'superuserName' => 'admin'
+		#'install' => true, // Enables the installer.
+		#'superuserName' => 'admin'
 		),
 	),
-)
+	)
 ?>

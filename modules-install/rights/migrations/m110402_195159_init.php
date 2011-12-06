@@ -111,7 +111,7 @@ class m110402_195159_init extends CDbMigration {
 			"name" => "Guest",
 			"type" => "2",
 			"description" => null,
-			"bizrule" => null,
+			"bizrule" => 'return Yii::app()->user->isGuest;',
 			"data" => "N;",
 		));
 
