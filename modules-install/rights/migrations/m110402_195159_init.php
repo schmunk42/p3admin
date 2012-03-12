@@ -115,12 +115,6 @@ class m110402_195159_init extends CDbMigration {
 			"data" => "N;",
 		));
 
-		$this->insert("AuthAssignment", array(
-			"itemname" => "Admin",
-			"userid" => "1",
-			"bizrule" => null,
-			"data" => "N;",
-		));
 		
 	}
 
