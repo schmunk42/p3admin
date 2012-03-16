@@ -137,6 +137,14 @@ class m111013_235000_p3items extends CDbMigration {
 			"bizrule" => null,
 			"data" => "N;",
 		));
+
+		// assignin admin after editor, otherwise all items created by admin are protected, TODO
+		$this->insert("AuthAssignment", array(
+			"itemname" => "Editor",
+			"userid" => "1",
+			"bizrule" => null,
+			"data" => "N;",
+		));	
 		
 		// assignin admin after editor, otherwise all items created by admin are protected, TODO
 		$this->insert("AuthAssignment", array(
