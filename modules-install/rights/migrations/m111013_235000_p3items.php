@@ -86,6 +86,14 @@ class m111013_235000_p3items extends CDbMigration {
 		));
 
 		$this->insert("AuthItem", array(
+			"name" => "P3widgets.Widget.*",
+			"type" => "1",
+			"description" => "Frontend Editor",
+			"bizrule" => null,
+			"data" => "N;",
+		));
+
+		$this->insert("AuthItem", array(
 			"name" => "P3widgets.P3Widget.*",
 			"type" => "1",
 			"description" => null,
@@ -174,6 +182,10 @@ class m111013_235000_p3items extends CDbMigration {
 			"child" => "P3widgets.Default.*",
 		));
 
+		$this->insert("AuthItemChild", array(
+			"parent" => "Editor",
+			"child" => "P3widgets.Widget.*",
+		));
 		$this->insert("AuthItemChild", array(
 			"parent" => "Editor",
 			"child" => "P3widgets.P3Widget.*",
