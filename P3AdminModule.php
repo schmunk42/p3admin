@@ -67,7 +67,8 @@ class P3AdminModule extends CWebModule {
 	public static function findModules() {
 
 		$dir = Yii::app()->basePath;
-
+		
+		$return = array();
 		foreach (scandir($dir . DIRECTORY_SEPARATOR . "extensions") AS $module) {
 			if ((($module != ".") && ($module != "..")) && (is_dir($dir . DIRECTORY_SEPARATOR . "modules" . DIRECTORY_SEPARATOR . $module) && strstr($module, ".") === false)) {
 				#Yii::import("application.modules." . $module . ".controllers.*");
@@ -81,6 +82,7 @@ class P3AdminModule extends CWebModule {
 
 		$dir = Yii::app()->basePath;
 
+		$return = array();
 		foreach (scandir($dir . DIRECTORY_SEPARATOR . "controllers") AS $controller) {
 			if (substr($controller, 0, 1) != "." && (is_file($dir . DIRECTORY_SEPARATOR . "controllers" . DIRECTORY_SEPARATOR . $controller))) {
 				#Yii::import("application.modules." . $module . ".controllers.*");
