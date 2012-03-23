@@ -2,11 +2,11 @@
 
 return array(
 	'import' => array(
-		'ext.mishamx.user.models.*',
+		'ext.mishamx.yii-user.models.*',
 	),
 	'modules' => array(
 		'user' => array(
-			'class' => 'ext.mishamx.user.UserModule',
+			'class' => 'ext.mishamx.yii-user.UserModule',
 			'activeAfterRegister' => false,
 		),
 	),

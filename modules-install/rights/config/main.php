@@ -2,8 +2,8 @@
 
 return array(
 	'import' => array(
-		'application.modules.rights.*',
-		'application.modules.rights.components.*', // Correct paths if necessary.
+		'ext.crisu83.yii-rights.*',
+		'ext.crisu83.yii-rights.components.*', // Correct paths if necessary.
 	),
 	'components' => array(
 		'user' => array(
@@ -17,7 +17,7 @@ return array(
 	'modules' => array(
 		
 		'rights' => array(
-			'class' => 'ext.rights.RightsModule',
+			'class' => 'ext.crisu83.yii-rights.RightsModule',
 			'userIdColumn' => 'id',
 			'userClass' => 'User',
 		#'install' => true, // Enables the installer.
