@@ -68,7 +68,7 @@ class P3AdminModule extends CWebModule {
 
 		$dir = Yii::app()->basePath;
 
-		foreach (scandir($dir . DIRECTORY_SEPARATOR . "modules") AS $module) {
+		foreach (scandir($dir . DIRECTORY_SEPARATOR . "extensions") AS $module) {
 			if ((($module != ".") && ($module != "..")) && (is_dir($dir . DIRECTORY_SEPARATOR . "modules" . DIRECTORY_SEPARATOR . $module) && strstr($module, ".") === false)) {
 				#Yii::import("application.modules." . $module . ".controllers.*");
 				$return[] = $module;
