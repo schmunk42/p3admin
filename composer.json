@@ -1,5 +1,5 @@
 {
-    "name": "phundament/p3admin",
+    "name": "p3admin",
     "description": "Admin Manager",
     "keywords": ["package", "dependency", "autoload"],
     "homepage": "http://phundament.com/",
