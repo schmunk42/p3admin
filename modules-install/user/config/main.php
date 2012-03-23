@@ -6,6 +6,7 @@ return array(
 	),
 	'modules' => array(
 		'user' => array(
+			'class' => 'ext.user.UserModule',
 			'activeAfterRegister' => false,
 		),
 	),

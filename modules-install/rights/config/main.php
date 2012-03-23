@@ -15,7 +15,9 @@ return array(
 		),
 	),
 	'modules' => array(
+		
 		'rights' => array(
+			'class' => 'ext.rights.RightsModule',
 			'userIdColumn' => 'id',
 			'userClass' => 'User',
 		#'install' => true, // Enables the installer.
