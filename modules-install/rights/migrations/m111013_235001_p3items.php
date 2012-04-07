@@ -1,6 +1,6 @@
 <?php
 
-class m111013_235000_p3items extends CDbMigration {
+class m111013_235001_p3items extends CDbMigration {
 
 	public function up() {
 

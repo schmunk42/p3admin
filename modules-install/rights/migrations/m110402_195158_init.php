@@ -1,6 +1,6 @@
 <?php
 
-class m110402_195159_init extends CDbMigration {
+class m110402_195158_init extends CDbMigration {
 
 	public function up() {
 
