@@ -4,7 +4,6 @@ class m120418_162301_userTimestampFix extends CDbMigration
 {
 	public function safeUp()
 	{
-
         /*if (!Yii::app()->getModule('user')) {
             echo "\n\nAdd to console.php :\n"
                  ."'modules'=>array(\n"
