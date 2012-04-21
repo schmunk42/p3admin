@@ -9,9 +9,9 @@ class m110402_195159_init extends CDbMigration {
 			"username" => "varchar(20) NOT NULL",
 			"password" => "varchar(128) NOT NULL",
 			"email" => "varchar(128) NOT NULL",
-			"activkey" => "varchar(128) NOT NULL DEFAULT ''",
-			"create_at" => "TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP",
-			"lastvisit_at" => "TIMESTAMP NOT NULL DEFAULT '0000-00-00 00:00:00'",
+			"activkey" => "varchar(128) NOT NULL",
+			"createtime" => "int(10) NOT NULL",
+			"lastvisit" => "int(10) NOT NULL",
 			"superuser" => "int(1) NOT NULL",
 			"status" => "int(1) NOT NULL",
 			), "");
@@ -19,8 +19,11 @@ class m110402_195159_init extends CDbMigration {
 		$this->insert("usr_users", array(
 			"id" => "1",
 			"username" => "admin",
-			"password" => crypt("admin"),
-			"email" => "webmaster@localhost",
+			"password" => "21232f297a57a5a743894a0e4a801fc3",
+			"email" => "webmaster@example.com",
+			"activkey" => "21232f297a57a5a743894a0e4a801fc3",
+			"createtime" => "0",
+			"lastvisit" => "0",
 			"superuser" => "1",
 			"status" => "1",
 			));
@@ -28,8 +31,11 @@ class m110402_195159_init extends CDbMigration {
 		$this->insert("usr_users", array(
 			"id" => "2",
 			"username" => "demo",
-			"password" => crypt("demo"),
-			"email" => "demo@localhost",
+			"password" => "fe01ce2a7fbac8fafaed7c982a04e229",
+			"email" => "demo@example.com",
+			"activkey" => "fe01ce2a7fbac8fafaed7c982a04e229",
+			"createtime" => "0",
+			"lastvisit" => "0",
 			"superuser" => "0",
 			"status" => "1",
 			));
@@ -38,19 +44,21 @@ class m110402_195159_init extends CDbMigration {
 			"user_id" => "pk",
 			"lastname" => "varchar(50) NOT NULL",
 			"firstname" => "varchar(50) NOT NULL",
-			"birthday" => "DATE DEFAULT '0000-00-00'",
+			"birthday" => "date NOT NULL DEFAULT '0000-00-00'",
 			), "");
 
 		$this->insert("usr_profiles", array(
 			"user_id" => "1",
 			"lastname" => "Admin",
 			"firstname" => "Administrator",
+			"birthday" => "0000-00-00",
 			));
 
 		$this->insert("usr_profiles", array(
 			"user_id" => "2",
 			"lastname" => "Demo",
 			"firstname" => "Demo",
+			"birthday" => "0000-00-00",
 			));
 
 		$this->createTable("usr_profiles_fields", array(
