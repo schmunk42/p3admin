@@ -7,11 +7,8 @@ class m111013_235000_editor extends CDbMigration {
 		$this->insert("usr_users", array(
 			"id" => "3",
 			"username" => "editor",
-			"password" => "5aee9dbd2a188839105073571bee1b1f",
-			"email" => "editor@example.com",
-			"activkey" => "32ae2c5f8da0baaf8af20fedcb75d1a7",
-			"createtime" => "0",
-			"lastvisit" => "0",
+			"password" => crypt("editor"),
+			"email" => "editor@localhost",
 			"superuser" => "0",
 			"status" => "1",
 			));
@@ -21,7 +18,6 @@ class m111013_235000_editor extends CDbMigration {
 			"user_id" => "3",
 			"lastname" => "Editor",
 			"firstname" => "Phundament 3",
-			"birthday" => "0000-00-00",
 			));
 
 
