@@ -98,6 +98,7 @@ EOD;
 			$list=$this->buildFileList($sourceDir,$path,'',$ignoreFiles,$renameMap);
 			$this->addFileModificationCallbacks($list);
 			$this->copyFiles($list);
+			echo "\nSetting permissions";
 			$this->setPermissions($path);
 			echo "\nYour application has been created successfully under {$path}.\n";
 		}
@@ -110,11 +111,11 @@ EOD;
 	 */
 	protected function setPermissions($targetDir)
 	{
-		@chmod($targetDir.'/assets',0777);
-		@chmod($targetDir.'/protected/runtime',0777);
-		@chmod($targetDir.'/protected/data',0777);
-		@chmod($targetDir.'/protected/data/testdrive.db',0777);
-		@chmod($targetDir.'/protected/yiic',0755);
+		@chmod($targetDir.'/www/assets',0777);
+		@chmod($targetDir.'/runtime',0777);
+		@chmod($targetDir.'/data',0777);
+		@chmod($targetDir.'/data/default.db',0777);
+		@chmod($targetDir.'/yiic',0755);
 	}
 
 	/**
