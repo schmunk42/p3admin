@@ -20,6 +20,8 @@
 Yii::import('system.cli.commands.*');
 class P3WebAppCommand extends WebAppCommand
 {
+    public $path;
+
 	private $_rootPath;
 	private $_frameworkPath;
 
@@ -57,8 +59,13 @@ EOD;
 				$this->usageError('Unsupported VCS specified. Currently only git and hg supported.');
 			$vcs=$args[1];
 		}
+        
+        if($this->path) {
+            $args[0] = $this->path;
+        }
 		if(!isset($args[0]))
 			$this->usageError('the Web application location is not specified.');
+			
 		$path=strtr($args[0],'/\\',DIRECTORY_SEPARATOR);
 		if(strpos($path,DIRECTORY_SEPARATOR)===false)
 			$path='.'.DIRECTORY_SEPARATOR.$path;
