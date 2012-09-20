@@ -78,8 +78,7 @@ EOD;
 			$this->_rootPath=$path=$dir;
 		else
 			$this->_rootPath=$path=$dir.DIRECTORY_SEPARATOR.basename($path);
-		$this->_frameworkPath = $this->_rootPath.'/vendor/yiisoft/yii/framework';
-		
+			
 		if($this->confirm("Create a Web application under '$path'?"))
 		{
 			$sourceDir=$this->getSourceDir();
@@ -159,7 +158,7 @@ EOD;
 	public function generateIndex($source,$params)
 	{
 		$content=file_get_contents($source);
-		$yii=realpath($this->_frameworkPath.'/yii.php');
+		$yii=realpath(Yii::getPathOfAlias('system').'/yii.php');
 		$yii=$this->getRelativePath($yii,$this->_rootPath.DIRECTORY_SEPARATOR.'www'.DIRECTORY_SEPARATOR.'index.php');
 		$yii=str_replace('\\','\\\\',$yii);
 		return preg_replace('/\$yii\s*=(.*?);/',"\$yii=$yii;",$content);
@@ -175,7 +174,7 @@ EOD;
 	public function generateTestBoostrap($source,$params)
 	{
 		$content=file_get_contents($source);
-		$yii=realpath($this->_frameworkPath.'/yiit.php');
+		$yii=realpath(Yii::getPathOfAlias('system').'/yiit.php');
 		$yii=$this->getRelativePath($yii,$this->_rootPath.DIRECTORY_SEPARATOR.'tests'.DIRECTORY_SEPARATOR.'bootstrap.php');
 		$yii=str_replace('\\','\\\\',$yii);
 		return preg_replace('/\$yiit\s*=(.*?);/',"\$yiit=$yii;",$content);
@@ -191,7 +190,7 @@ EOD;
 	public function generateYiic($source,$params)
 	{
 		$content=file_get_contents($source);
-		$yiic=realpath($this->_frameworkPath.'/yiic.php');
+		$yiic=realpath(Yii::getPathOfAlias('system').'/yiic.php');
 		$yiic=$this->getRelativePath($yiic,$this->_rootPath.DIRECTORY_SEPARATOR.'yiic.php');
 		$yiic=str_replace('\\','\\\\',$yiic);
 		return preg_replace('/\$yiic\s*=(.*?);/',"\$yiic=$yiic;",$content);
