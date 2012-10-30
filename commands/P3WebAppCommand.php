@@ -18,9 +18,11 @@
  * @since 1.0
  */
 Yii::import('system.cli.commands.*');
-class P3WebAppCommand extends WebAppCommand
+class P3WebAppCommand extends CConsoleCommand
 {
     public $path;
+    public $interactive = true;
+    public $defaultAction = 'create';
 
 	private $_rootPath;
 	private $_frameworkPath;
@@ -29,12 +31,13 @@ class P3WebAppCommand extends WebAppCommand
 	{
 		return <<<EOD
 USAGE
-  yiic p3webapp <app-path> [<vcs>]
+  yiic p3webapp <action> <app-path> [<vcs>]
 
 DESCRIPTION
   This command generates an Yii Web Application at the specified location.
 
 PARAMETERS
+ * action: required, eg. 'create' to create a new web application .
  * app-path: required, the directory where the new application will be created.
    If the directory does not exist, it will be created. After the application
    is created, please make sure the directory can be accessed by Web users.
@@ -50,7 +53,7 @@ EOD;
 	 * Execute the action.
 	 * @param array $args command line parameters specific for this command
 	 */
-	public function run($args)
+	public function actionCreate($args)
 	{
 		$vcs=false;
 		if(isset($args[1]))
@@ -59,7 +62,14 @@ EOD;
 				$this->usageError('Unsupported VCS specified. Currently only git and hg supported.');
 			$vcs=$args[1];
 		}
-        
+
+        if(isset($args[2]))
+        {
+            if($args[2]=='git' && $args[1]!='hg')
+                $this->usageError('Unsupported VCS specified. Currently only git and hg supported.');
+            $vcs=$args[1];
+        }
+
         if($this->path) {
             $args[0] = $this->path;
         }
@@ -78,8 +88,8 @@ EOD;
 			$this->_rootPath=$path=$dir;
 		else
 			$this->_rootPath=$path=$dir.DIRECTORY_SEPARATOR.basename($path);
-			
-		if($this->confirm("Create a Web application under '$path'?"))
+
+		if($this->confirm("Create a Web application under '$path'?", !$this->interactive) )
 		{
 			$sourceDir=$this->getSourceDir();
 			if($sourceDir===false)
@@ -226,4 +236,12 @@ EOD;
 
 		return 'dirname(__FILE__).\''.$up.'/'.basename($path1).'\'';
 	}
+
+    public function confirm($message,$default=false)
+    {
+        if ($this->interactive == false) {
+            return $default;
+        }
+        parent::confirm($message, $default);
+    }
 }
