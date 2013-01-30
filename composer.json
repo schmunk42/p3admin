@@ -1,9 +1,9 @@
 {
     "name": "phundament/p3admin",
-    "description": "Admin Manager",
-    "keywords": ["package", "dependency", "autoload"],
+    "description": "Yii application info and skeleton",
+    "keywords": ["yii", "application", "information", "webapp", "skeleton"],
     "homepage": "http://phundament.com/",
-    "type": "library",
+    "type": "yii-extension",
     "license": "BSD-3-Clause",
     "authors": [
         {
