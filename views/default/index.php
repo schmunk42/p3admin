@@ -4,31 +4,23 @@ $this->breadcrumbs = array(
 );
 ?>
 
-<p>
-    <?php
-    $this->widget('TbBreadcrumbs',
-                  array(
-                       'links' => $this->breadcrumbs
-                  )
-    );
-    ?>
-</p>
+<?php $this->widget("TbBreadcrumbs", array("links"=>$this->breadcrumbs)) ?>
 
-
-<h1>Administration</h1>
+<h1>Application</h1>
 
 <?php $this->beginClip('modules') ?>
-    <ul class="thumbnails">
-        <?php foreach ($this->getModuleData() AS $name => $config): ?>
-        <li class="span4">
-            <div class="thumbnail">
-                <h3><?php echo CHtml::link($name, array('/' . $name)) ?></h3>
-                <small><?php echo ($config !== null) ? str_replace(".","<wbr>.",$config['class']) : '<em>Not configured yet</em>' ?></small>
-            </div>
-        </li>
-        <?php endforeach; ?>
-        </table>
-    </ul>
+<ul class="thumbnails">
+    <?php foreach ($this->getModuleData() AS $name => $config): ?>
+    <li class="span4">
+        <div class="thumbnail">
+            <h3><?php echo CHtml::link($name, array('/' . $name)) ?></h3>
+            <small><?php echo ($config !== null) ? str_replace(".", "<wbr>.", $config['class']) :
+                '<em>Not configured yet</em>' ?></small>
+        </div>
+    </li>
+    <?php endforeach; ?>
+    </table>
+</ul>
 <?php $this->endClip() ?>
 
 
@@ -50,12 +42,12 @@ var_dump($metadata);
 
 <?php $this->beginClip('__pkg') ?>
 <ul>
-<?php
-$json = CJSON::decode(file_get_contents(Yii::app()->basePath.DIRECTORY_SEPARATOR.'composer.lock'));
-foreach($json['packages'] AS $package) {
-    echo "<li><span class='label'>".$package['name']."</span><span class='label label-inverse'>".$package['version']."</span></li>";
-};
-?>
+    <?php
+    $json = CJSON::decode(file_get_contents(Yii::app()->basePath . DIRECTORY_SEPARATOR . 'composer.lock'));
+    foreach ($json['packages'] AS $package) {
+        echo "<li><span class='label'>" . $package['name'] . "</span><span class='label label-inverse'>" . $package['version'] . "</span></li>";
+    };
+    ?>
 </ul>
 <?php $this->endClip() ?>
 
