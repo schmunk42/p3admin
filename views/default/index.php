@@ -1,32 +1,90 @@
 <?php
 $this->breadcrumbs = array(
-	$this->module->id,
+    $this->module->id,
 );
 ?>
 
-<h1>Phundament 3 Administration</h1>
+<p>
+    <?php
+    $this->widget('TbBreadcrumbs',
+                  array(
+                       'links' => $this->breadcrumbs
+                  )
+    );
+    ?>
+</p>
 
-<h2>Modules</h2>
 
-<table class="span-12 append-12 last">
-	<?php foreach ($this->getModuleData() AS $name => $config): ?>
-		<tr class="<?php echo ($config !== null) ? 'success' : 'error' ?>">
-			<td>
-			<?php echo CHtml::link($name, array('/' . $name)) ?>
-		</td>
-		<td>
-			<?php echo ($config !== null) ? $config['class'] : '<em>Not configured yet</em>' ?>
-		</td>
-		<td>
-			<?php echo CHtml::link('Manage', array('/p3admin/module', 'module' => $name)) ?>
-		</td>
-	</tr>
-	<?php endforeach; ?>
-		</table>
+<h1>Administration</h1>
 
-<h2>Controllers</h2>
+<?php $this->beginClip('modules') ?>
+    <ul class="thumbnails">
+        <?php foreach ($this->getModuleData() AS $name => $config): ?>
+        <li class="span4">
+            <div class="thumbnail">
+                <h3><?php echo CHtml::link($name, array('/' . $name)) ?></h3>
+                <small><?php echo ($config !== null) ? str_replace(".","<wbr>.",$config['class']) : '<em>Not configured yet</em>' ?></small>
+            </div>
+        </li>
+        <?php endforeach; ?>
+        </table>
+    </ul>
+<?php $this->endClip() ?>
+
+
+<?php $this->beginClip('controllers') ?>
 <ul>
-	<?php foreach ($this->module->findApplicationControllers() AS $name): ?>
-	<li><?php echo CHtml::link($name, array('/'.$name)) ?></li>
-	<?php endforeach; ?>
+    <?php foreach ($this->module->findApplicationControllers() AS $name): ?>
+    <li><?php echo CHtml::link($name, array('/' . $name)) ?></li>
+    <?php endforeach; ?>
 </ul>
+<?php $this->endClip() ?>
+
+
+<?php $this->beginClip('__md') ?>
+<?php
+$metadata = Yii::app()->getModule('p3admin')->metadata->getAll();
+var_dump($metadata);
+?>
+<?php $this->endClip() ?>
+
+<?php $this->beginClip('__pkg') ?>
+<ul>
+<?php
+$json = CJSON::decode(file_get_contents(Yii::app()->basePath.DIRECTORY_SEPARATOR.'composer.lock'));
+foreach($json['packages'] AS $package) {
+    echo "<li><span class='label'>".$package['name']."</span><span class='label label-inverse'>".$package['version']."</span></li>";
+};
+?>
+</ul>
+<?php $this->endClip() ?>
+
+
+<?php
+$this->widget('bootstrap.widgets.TbTabs',
+              array(
+                   'type' => 'tabs',
+                   'placement' => 'above', // 'above', 'right', 'below' or 'left'
+                   'tabs' => array(
+                       array('label' => 'Modules',
+                             'content' => $this->clips['modules'],
+                             'active' => true),
+                       array('label' => 'Controllers',
+                             'content' => $this->clips['controllers']),
+                       array('label' => 'User',
+                             'content' => $this->renderPartial('_user', array(), true)),
+                       array('label' => 'Configuration',
+                             'content' => $this->renderPartial('_config', array(), true),
+                       ),
+                       array('label' => 'Packages',
+                             'content' => $this->clips['__pkg']),
+                       array('label' => 'Models',
+                             'content' => $this->clips['__md']),
+
+                   )
+              )
+);
+?>
+
+
+

@@ -59,7 +59,6 @@ class DefaultController extends Controller {
 	}
 
 	public function actionIndex() {
-		$this->layout = "//layouts/column2";
 		$this->render('index');
 	}
 
@@ -83,6 +82,7 @@ class DefaultController extends Controller {
 
 		#var_dump($filesystem);
 		#var_dump($config);
+        ksort($config);
 
 		return $config;
 	}
