@@ -6,7 +6,7 @@ $this->breadcrumbs = array(
 
 <?php $this->widget("TbBreadcrumbs", array("links"=>$this->breadcrumbs)) ?>
 
-<h1>Application</h1>
+<h1>Application <small>Overview</small></h1>
 
 <?php $this->beginClip('modules') ?>
 <ul class="thumbnails">
@@ -52,6 +52,14 @@ var_dump($metadata);
 <?php $this->endClip() ?>
 
 
+<?php $this->beginClip('__set') ?>
+<h3>Language</h3>
+<p>
+    <?php echo Yii::app()->language ?>
+</p>
+<?php $this->endClip() ?>
+
+
 <?php
 $this->widget('bootstrap.widgets.TbTabs',
               array(
@@ -63,13 +71,16 @@ $this->widget('bootstrap.widgets.TbTabs',
                              'active' => true),
                        array('label' => 'Controllers',
                              'content' => $this->clips['controllers']),
+                       array('label' => 'Packages',
+                             'content' => $this->clips['__pkg']),
                        array('label' => 'User',
                              'content' => $this->renderPartial('_user', array(), true)),
                        array('label' => 'Configuration',
                              'content' => $this->renderPartial('_config', array(), true),
                        ),
-                       array('label' => 'Packages',
-                             'content' => $this->clips['__pkg']),
+                       array('label' => 'Settings',
+                             'content' => $this->clips['__set'],
+                       ),
                        array('label' => 'Models',
                              'content' => $this->clips['__md']),
 

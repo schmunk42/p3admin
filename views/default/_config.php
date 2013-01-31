@@ -1,11 +1,3 @@
-<h2>Language</h2>
-
-<p>
-    <?php echo Yii::app()->language ?>
-</p>
-
-<h2>Configuration</h2>
-
 <h3>
     Parameters
 </h3>

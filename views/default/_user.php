@@ -1,6 +1,3 @@
-<h2>Current User</h2>
-
-<h3>Information</h3>
 
 <div class="row">
 
