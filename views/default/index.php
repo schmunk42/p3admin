@@ -45,7 +45,7 @@ var_dump($metadata);
     <?php
     $json = CJSON::decode(file_get_contents(Yii::app()->basePath . DIRECTORY_SEPARATOR . 'composer.lock'));
     foreach ($json['packages'] AS $package) {
-        echo "<li><span class='label'>" . $package['name'] . "</span><span class='label label-inverse'>" . $package['version'] . "</span></li>";
+        echo "<li><span class=''>" . CHtml::link($package['name'],$package['homepage']) . "</span> <span class='label'>" . $package['version'] . "</span></li>";
     };
     ?>
 </ul>
