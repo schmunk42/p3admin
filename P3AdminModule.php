@@ -41,6 +41,10 @@ class P3AdminModule extends CWebModule {
 			'p3admin.models.*',
 			'p3admin.components.*',
 		));
+
+        // register metadata component
+        $metadata = Yii::createComponent(array('class' => 'vendor.phundament.p3admin.components.Metadata'));
+        $this->setComponent('metadata', $metadata);
 	}
 
 	public function beforeControllerAction($controller, $action) {
