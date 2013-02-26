@@ -1,4 +1,4 @@
-<?
+<?php
 /**
  * Metadata Helps to get metadata about models,controllers and actions in application*
  *
