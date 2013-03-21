@@ -43,7 +43,7 @@ var_dump($metadata);
 <?php $this->beginClip('__pkg') ?>
 <ul>
     <?php
-    $json = CJSON::decode(file_get_contents(Yii::app()->basePath . DIRECTORY_SEPARATOR . 'composer.lock'));
+    $json = CJSON::decode(file_get_contents(Yii::getPathOfAlias('root') . DIRECTORY_SEPARATOR . 'composer.lock'));
     foreach ($json['packages'] AS $package) {
         echo "<li><span class=''>" . CHtml::link($package['name'],$package['homepage']) . "</span> <span class='label'>" . $package['version'] . "</span></li>";
     };
