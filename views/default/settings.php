@@ -6,7 +6,7 @@ $this->breadcrumbs = array(
 
 <?php $this->widget("TbBreadcrumbs", array("links"=>$this->breadcrumbs)) ?>
 
-<h1>Application <small>Overview</small></h1>
+<h1>Application <small>Settings</small></h1>
 
 <?php $this->beginClip('modules') ?>
 <ul class="thumbnails">
