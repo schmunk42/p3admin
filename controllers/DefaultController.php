@@ -48,9 +48,13 @@ class DefaultController extends Controller {
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','settings'),
+				'actions'=>array('settings'),
 				'roles'=>array('Admin')
 			),
+            array('allow',  // allow all users to perform 'index' and 'view' actions
+                  'actions'=>array('index'),
+                  'users'=>array('@')
+            ),
 			array('deny',  // deny all users
 				'users'=>array('*'),
 				'expression'=> '!Yii::app()->getModule("p3admin")->params["install"]',
