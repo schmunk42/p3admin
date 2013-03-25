@@ -8,6 +8,6 @@ $this->breadcrumbs = array(
 
 <h1>Application <small>Backend</small></h1>
 
-<p>Welcome to Phundament!</p>
+<?php $this->widget('p3widgets.components.P3WidgetContainer', array('id' => 'backend', 'varyByRequestParam' => P3Page::PAGE_ID_KEY, 'checkAccess' => 'Admin')) ?>
 
 
