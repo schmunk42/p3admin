@@ -217,13 +217,6 @@ class m111013_235001_p3items extends CDbMigration {
 			"child" => "P3pages.P3PageTranslation.*",
 		));
 
-		$this->insert("AuthAssignment", array(
-			"itemname" => "Editor",
-			"userid" => "3",
-			"bizrule" => null,
-			"data" => "N;",
-		));
-
 		// assignin admin after editor, otherwise all items created by admin are protected, TODO
 		$this->insert("AuthAssignment", array(
 			"itemname" => "Editor",
