@@ -44,11 +44,21 @@ var_dump($metadata);
 <ul>
     <?php
     $json = CJSON::decode(file_get_contents(Yii::getPathOfAlias('root') . DIRECTORY_SEPARATOR . 'composer.lock'));
-    foreach ($json['packages'] AS $package) {
-        echo "<li><span class=''>" . CHtml::link($package['name'],$package['homepage']) . "</span> <span class='label'>" . $package['version'] . "</span></li>";
+    if (isset($json['packages'])) foreach ($json['packages'] AS $package) {
+        echo "<li><span class=''>" . CHtml::link($package['name'], (isset($package['homepage']))?$package['homepage']:'') . "</span> <span class='label'>" . $package['version'] . "</span></li>";
     };
     ?>
 </ul>
+<h3>Dev Packages</h3>
+<ul>
+    <?php
+    $json = CJSON::decode(file_get_contents(Yii::getPathOfAlias('root') . DIRECTORY_SEPARATOR . 'composer.lock'));
+    if (isset($json['packages-dev'])) foreach ($json['packages-dev'] AS $package) {
+        echo "<li><span class=''>" . CHtml::link($package['name'], (isset($package['homepage']))?$package['homepage']:'') . "</span> <span class='label'>" . $package['version'] . "</span></li>";
+    };
+    ?>
+</ul>
+
 <?php $this->endClip() ?>
 
 
