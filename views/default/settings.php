@@ -34,9 +34,11 @@ $this->breadcrumbs = array(
 
 
 <?php $this->beginClip('__md') ?>
+disabled
 <?php
-$metadata = Yii::app()->getModule('p3admin')->metadata->getAll();
-var_dump($metadata);
+// TODO: disabled - incompatiblity with Yii 1.1.13(?) - Yii::app()->user == 'Guest' ?!
+#$metadata = Yii::app()->getModule('p3admin')->metadata->getAll();
+#var_dump($metadata);
 ?>
 <?php $this->endClip() ?>
 
