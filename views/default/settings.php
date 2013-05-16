@@ -6,7 +6,10 @@ $this->breadcrumbs = array(
 
 <?php $this->widget("TbBreadcrumbs", array("links"=>$this->breadcrumbs)) ?>
 
-<h1>Application <small>Settings</small></h1>
+<h1>
+	<?php echo Yii::t('P3AdminModule.crud', 'Application'); ?>
+	<small><?php echo Yii::t('P3AdminModule.crud', 'Settings'); ?></small>
+</h1>
 
 <?php $this->beginClip('modules') ?>
 <ul class="thumbnails">
@@ -65,7 +68,7 @@ disabled
 
 
 <?php $this->beginClip('__set') ?>
-<h3>Language</h3>
+<h3><?php echo Yii::t('P3AdminModule.crud', 'Language'); ?></h3>
 <p>
     <?php echo Yii::app()->language ?>
 </p>
@@ -78,22 +81,22 @@ $this->widget('bootstrap.widgets.TbTabs',
                    'type' => 'tabs',
                    'placement' => 'above', // 'above', 'right', 'below' or 'left'
                    'tabs' => array(
-                       array('label' => 'Modules',
+                       array('label' => Yii::t('P3AdminModule.crud', 'Modules'),
                              'content' => $this->clips['modules'],
                              'active' => true),
-                       array('label' => 'Controllers',
+                       array('label' => Yii::t('P3AdminModule.crud', 'Controllers'),
                              'content' => $this->clips['controllers']),
-                       array('label' => 'Packages',
+                       array('label' => Yii::t('P3AdminModule.crud', 'Packages'),
                              'content' => $this->clips['__pkg']),
-                       array('label' => 'User',
+                       array('label' => Yii::t('P3AdminModule.crud', 'User'),
                              'content' => $this->renderPartial('_user', array(), true)),
-                       array('label' => 'Configuration',
+                       array('label' => Yii::t('P3AdminModule.crud', 'Configuration'),
                              'content' => $this->renderPartial('_config', array(), true),
                        ),
-                       array('label' => 'Settings',
+                       array('label' => Yii::t('P3AdminModule.crud', 'Settings'),
                              'content' => $this->clips['__set'],
                        ),
-                       array('label' => 'Models',
+                       array('label' => Yii::t('P3AdminModule.crud', 'Models'),
                              'content' => $this->clips['__md']),
 
                    )
