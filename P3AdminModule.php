@@ -84,9 +84,19 @@ class P3AdminModule extends CWebModule {
 		return $return;
 	}
 
-	public static function findApplicationControllers() {
+	public static function findApplicationControllers($sModuleAlias = FALSE) {
 
-		$dir = Yii::app()->basePath;
+	        if(!$sModuleAlias){
+	            //APP controliers
+	            $dir = Yii::app()->basePath;
+	            $sScanDir = $dir . DIRECTORY_SEPARATOR . "controllers";
+	        }else{
+	            //Module controlliers
+	            $aModuleAlias = explode('.',$sModuleAlias);
+	            array_pop($aModuleAlias);
+	            $dir = Yii::getPathOfAlias(implode('.',$aModuleAlias));
+	            $sScanDir = $dir . DIRECTORY_SEPARATOR . "controllers";
+	        }
 
 		$return = array();
 		foreach (scandir($dir . DIRECTORY_SEPARATOR . "controllers") AS $controller) {
