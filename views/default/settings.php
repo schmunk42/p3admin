@@ -28,11 +28,20 @@ $this->breadcrumbs = array(
 
 
 <?php $this->beginClip('controllers') ?>
+<h3>App</h3>
 <ul>
     <?php foreach ($this->module->findApplicationControllers() AS $name): ?>
     <li><?php echo CHtml::link($name, array('/' . $name)) ?></li>
     <?php endforeach; ?>
 </ul>
+
+<?php foreach ($this->getModuleData() AS $name => $config): ?>
+<h3><?php echo CHtml::link($name, array('/' . $name)) ?></h3>
+<ul>
+    <?php foreach ($this->module->findApplicationControllers($config['class']) AS $controller_name): ?>
+    <li><?php echo CHtml::link($controller_name, array('/' . $name.'/'. $controller_name,)) ?></li>
+    <?php endforeach; ?>        
+</ul>    
 <?php $this->endClip() ?>
 
 
