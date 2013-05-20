@@ -1,4 +1,3 @@
-
 <div class="row">
 
     <div class="span-4">
@@ -20,7 +19,7 @@
 
         <p>
             <?php foreach (Yii::app()->authManager->getAuthItems(2, Yii::app()->user->id) AS $key => $value)
-            echo $key . ", " ?>
+                echo $key . ", " ?>
         </p>
     </div>
     <div class="span4">
