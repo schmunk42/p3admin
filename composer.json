@@ -17,6 +17,6 @@
         "yiisoft/yii": ">=1.1.12",
         "phundament/p3extensions": ">=0.7",
         "phundament/p3widgets": "*",
-        "crisu83/yii-bootstrap": ">=1.0,<3.0"
+        "clevertech/yiibooster": "1.*"
     }
 }
