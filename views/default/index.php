@@ -7,7 +7,7 @@ $this->breadcrumbs = array(
 <?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
 
 <h1><?php echo Yii::t('P3AdminModule.crud', 'Application'); ?>
-    <small><?php echo Yii::t('P3AdminModule.crud', 'Backend'); ?></small>
+    <small><?php echo Yii::t('P3AdminModule.crud', 'Dashboard'); ?></small>
 </h1>
 
 <?php $this->widget('p3widgets.components.P3WidgetContainer', array('id'                 => 'backend',
