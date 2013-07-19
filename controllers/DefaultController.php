@@ -50,7 +50,7 @@ class DefaultController extends Controller
                   'roles'   => array('P3admin.Default.Index'),
             ),
             array('allow', // allow all users to perform 'index' and 'view' actions
-                  'actions' => array('settings'),
+                  'actions' => array('overview'),
                   'roles'   => array('P3admin.Default.Settings')
             ),
             array('deny', // deny all users
@@ -64,10 +64,10 @@ class DefaultController extends Controller
         $this->render('index');
     }
 
-    public function actionSettings()
+    public function actionOverview()
     {
         #$this->layout = "//layouts/column2";
-        $this->render('settings');
+        $this->render('overview');
     }
 
 
