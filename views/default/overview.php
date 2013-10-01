@@ -46,16 +46,6 @@
     <?php endforeach; ?>
     <?php $this->endClip() ?>
 
-
-    <?php $this->beginClip('__md') ?>
-    disabled
-    <?php
-    // TODO: disabled - incompatiblity with Yii 1.1.13(?) - Yii::app()->user == 'Guest' ?!
-    #$metadata = Yii::app()->getModule('p3admin')->metadata->getAll();
-    #var_dump($metadata);
-    ?>
-    <?php $this->endClip() ?>
-
     <?php $this->beginClip('__pkg') ?>
     <div class="span6">
         <h3>Standard Packages</h3>
@@ -140,8 +130,8 @@
                      'content' => $this->clips['__set'],
                  ),
                  array(
-                     'label'   => Yii::t('P3AdminModule.crud', 'Models'),
-                     'content' => $this->clips['__md']
+                     'label'   => Yii::t('P3AdminModule.crud', 'Log'),
+                     'content' => $this->renderPartial('_log', array(), true)
                  ),
 
              )
