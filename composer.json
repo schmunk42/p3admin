@@ -17,6 +17,6 @@
         "yiisoft/yii": ">=1.1.12",
         "phundament/p3widgets": "*",
         "sammaye/auditrail2": "1.*",
-        "clevertech/yiibooster": "1.*"
+        "clevertech/yiibooster": "1.*,2.*"
     }
 }
