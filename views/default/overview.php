@@ -60,7 +60,7 @@
                             $package['name'],
                             (isset($package['homepage'])) ?
                                 $package['homepage'] : ''
-                        ) . "</span> <span class='label'>" . $package['version'] . "</span></li>";
+                        ) . "</span> <span class='label'>" . $package['version'] . "</span> <small>" . $package['source']['reference'] . "</small></li>";
                 }
             };
             ?>
@@ -79,7 +79,7 @@
                             $package['name'],
                             (isset($package['homepage'])) ?
                                 $package['homepage'] : ''
-                        ) . "</span> <span class='label'>" . $package['version'] . "</span></li>";
+                        ) . "</span> <span class='label'>" . $package['version'] . "</span> <small>" . $package['source']['reference'] . "</small></li>";
                 }
             };
             ?>
