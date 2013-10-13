@@ -6,8 +6,8 @@ $this->breadcrumbs = array(
 
 <?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
 
-<h1><?php echo Yii::t('P3AdminModule.crud', 'Application'); ?>
-    <small><?php echo Yii::t('P3AdminModule.crud', 'Dashboard'); ?></small>
+<h1><?php echo Yii::t('P3AdminModule.module', 'Application'); ?>
+    <small><?php echo Yii::t('P3AdminModule.module', 'Dashboard'); ?></small>
 </h1>
 
 <div class="flash-notice">

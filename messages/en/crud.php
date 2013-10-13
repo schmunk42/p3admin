@@ -17,15 +17,14 @@
  * NOTE, this file must be saved in UTF-8 encoding.
  */
 return array (
+  'Application' => '',
+  'Configuration' => '',
   'Controllers' => '',
-  'Dashboard' => '',
+  'Language' => '',
   'Log' => '',
-  'Application' => 'Anwendung',
-  'Configuration' => 'Konfiguration',
-  'Language' => 'Sprache',
-  'Modules' => 'Module',
-  'Overview' => 'Übersicht',
-  'Packages' => 'Pakete',
-  'Settings' => 'Einstellungen',
-  'User' => 'Benutzer',
+  'Modules' => '',
+  'Overview' => '',
+  'Packages' => '',
+  'Settings' => '',
+  'User' => '',
 );

@@ -8,8 +8,8 @@
     <?php $this->widget("TbBreadcrumbs", array("links" => $this->breadcrumbs)) ?>
 
     <h1>
-        <?php echo Yii::t('P3AdminModule.crud', 'Application'); ?>
-        <small><?php echo Yii::t('P3AdminModule.crud', 'Overview'); ?></small>
+        <?php echo Yii::t('P3AdminModule.module', 'Application'); ?>
+        <small><?php echo Yii::t('P3AdminModule.module', 'Overview'); ?></small>
     </h1>
 
     <?php $this->beginClip('modules') ?>
@@ -89,7 +89,7 @@
 
 
     <?php $this->beginClip('__set') ?>
-    <h3><?php echo Yii::t('P3AdminModule.crud', 'Language'); ?></h3>
+    <h3><?php echo Yii::t('P3AdminModule.module', 'Language'); ?></h3>
 
     <p>
         <?php echo Yii::app()->language ?>
@@ -105,32 +105,32 @@
              'placement' => 'above', // 'above', 'right', 'below' or 'left'
              'tabs'      => array(
                  array(
-                     'label'   => Yii::t('P3AdminModule.crud', 'Modules'),
+                     'label'   => Yii::t('P3AdminModule.module', 'Modules'),
                      'content' => $this->clips['modules'],
                      'active'  => true
                  ),
                  array(
-                     'label'   => Yii::t('P3AdminModule.crud', 'Controllers'),
+                     'label'   => Yii::t('P3AdminModule.module', 'Controllers'),
                      'content' => $this->clips['controllers']
                  ),
                  array(
-                     'label'   => Yii::t('P3AdminModule.crud', 'Packages'),
+                     'label'   => Yii::t('P3AdminModule.module', 'Packages'),
                      'content' => $this->clips['__pkg']
                  ),
                  array(
-                     'label'   => Yii::t('P3AdminModule.crud', 'User'),
+                     'label'   => Yii::t('P3AdminModule.module', 'User'),
                      'content' => $this->renderPartial('_user', array(), true)
                  ),
                  array(
-                     'label'   => Yii::t('P3AdminModule.crud', 'Configuration'),
+                     'label'   => Yii::t('P3AdminModule.module', 'Configuration'),
                      'content' => $this->renderPartial('_config', array(), true),
                  ),
                  array(
-                     'label'   => Yii::t('P3AdminModule.crud', 'Settings'),
+                     'label'   => Yii::t('P3AdminModule.module', 'Settings'),
                      'content' => $this->clips['__set'],
                  ),
                  array(
-                     'label'   => Yii::t('P3AdminModule.crud', 'Log'),
+                     'label'   => Yii::t('P3AdminModule.module', 'Log'),
                      'content' => $this->renderPartial('_log', array(), true)
                  ),
 

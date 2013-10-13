@@ -15,19 +15,17 @@
  * of the guide for details.
  *
  * NOTE, this file must be saved in UTF-8 encoding.
- *
- * @version $Id: $
  */
 return array (
-  'Application' => 'Anwendung',
-  'Backend' => '',
-  'Language' => 'Sprache',
-  'Modules' => 'Module',
+  'Application' => '',
+  'Configuration' => '',
   'Controllers' => '',
+  'Dashboard' => '',
+  'Language' => '',
+  'Log' => '',
+  'Modules' => '',
+  'Overview' => '',
   'Packages' => '',
-  'User' => 'Benutzer',
-  'Configuration' => 'Konfiguration',
-  'Settings' => 'Einstellungen',
-  'Models' => '',
-
+  'Settings' => '',
+  'User' => '',
 );
