@@ -45,16 +45,24 @@ class DefaultController extends Controller
     public function accessRules()
     {
         return array(
-            array('allow', // allow all users to perform 'index' and 'view' actions
-                  'actions' => array('index'),
-                  'roles'   => array('P3admin.Default.Index'),
+            array(
+                'allow',
+                'actions' => array('index'),
+                'roles'   => array('P3admin.Default.Index'),
             ),
-            array('allow', // allow all users to perform 'index' and 'view' actions
-                  'actions' => array('overview'),
-                  'roles'   => array('P3admin.Default.Settings')
+            array(
+                'allow',
+                'actions' => array('overview'),
+                'roles'   => array('P3admin.Default.Settings')
             ),
-            array('deny', // deny all users
-                  'users' => array('*'),
+            array(
+                'allow',
+                'actions' => array('userInfo'),
+                'users'   => array('*')
+            ),
+            array(
+                'deny', // deny all users
+                'users' => array('*'),
             ),
         );
     }
@@ -70,6 +78,16 @@ class DefaultController extends Controller
         $this->render('overview');
     }
 
+    public function actionUserInfo()
+    {
+        $authItems = Yii::app()->authManager->getAuthItems();
+        foreach ($authItems AS $item) {
+            if (Yii::app()->user->checkAccess($item->name)) {
+                $list[$item->name] = true;
+            }
+        }
+        $this->render('userInfo', array('list' => $list));
+    }
 
     public function getModuleData()
     {
@@ -79,8 +97,7 @@ class DefaultController extends Controller
         foreach ($filesystem AS $module) {
             if (!isset($config[$module])) {
                 $config[$module] = null;
-            }
-            else {
+            } else {
                 #$config[$module]
             }
         }
